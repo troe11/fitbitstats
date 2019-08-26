@@ -1,8 +1,10 @@
 var express = require('express');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-// var connection = require('./config/connection.js');
+var connection = require('./config/connection.js');
 var app = express();
+var passport = require('passport');
+var passport2 = require('passport-oauth2');
 
 var PORT = process.env.PORT || 3000;
 // Serve static content for the app from the "public" directory in the application directory.
@@ -16,9 +18,15 @@ var db = require('./models')
 // Routes
 // // =============================================================
 // require("./routes/storie-routes.js")(app);
-// require("./routes/html-routes.js")(app);
+//require("./routes/html-routes.js")(app);
 // require("./routes/user-routes.js")(app);
-
+app.get('/auth/fitbit', passport.authenticate('OAuth2', {scope:'activity'}))
+app.get('/auth/fitbit/callback', passport.authenticate('passport-oauth2', { 
+  successRedirect: '/',
+  failureRedirect: '/login' 
+}), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {

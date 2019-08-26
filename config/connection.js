@@ -1,14 +1,15 @@
 var mysql = require('mysql');
 
 const connection = mysql.createConnection({
-    host: '127.0.0.1',
+    host: 'l6slz5o3eduzatkw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     port: 3306,
 
-    user: 'root',
+    user: 'ql8w4gmk26sbr13l',
 
-    password: '',
+    password: 'rra0cauebddtbka9',
     database: 'zsk62jlt4f6hbvr7'
 });
 
 connection.connect();
 module.exports = connection;
+
