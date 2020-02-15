@@ -31,7 +31,7 @@
     "sequelize": "^5.16.0",
     "sequelize-cli": "^5.5.0",
     "validation": "0.0.1",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
